@@ -1,5 +1,5 @@
 
-import DetailMovie from '../Components/Movie';
+import DetailPage from '../Container/HomeTemplate/DetailPage';
 import HomePage from '../Container/HomeTemplate/HomePage';
 import ListMoviePage from '../Container/HomeTemplate/ListMoviePage';
 
@@ -13,8 +13,8 @@ const routeHome = [
   
     
     {
-        path: '/detail/:id',
-        component: DetailMovie,
+        path: '/detail-movie/:id',
+        component: DetailPage,
         exact: false,
     },
     {
