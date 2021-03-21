@@ -1,0 +1,14 @@
+
+@font-face{
+    font-family: 'SF Text Regular';
+    src: url(./SF-UI-Display-Regular.otf);
+
+}
+html,body{
+    @include styleText($fs-0,$color-black-0, normal);
+    background-color: $color-white-0;
+    font-family: 'SF Text Regular';
+    line-height: 1.42857143;
+    overflow-x: hidden;
+}
+
