@@ -20,6 +20,7 @@ function ListMoviePage(props) {
   const [state, setstate] = useState();
   
   useEffect(() => {
+  
     props.getListMovie();
     
   }, [])
@@ -33,7 +34,7 @@ function ListMoviePage(props) {
       if(props.loading){
         return (
             <div className="sweet-loading">
-                <BeatLoader css={override} size={25} color={"#62d493"} />
+                <BeatLoader css={override} size={25} color={"#fb4226"} />
             </div>
 
         )
@@ -41,7 +42,13 @@ function ListMoviePage(props) {
      
       if(state){
           return state.map((item) => {
-              return <MovieItem key={item.maPhim}item={item}/>
+              return (
+                <div className="col-12 col-md-4 col-lg-3" key={item.maPhim}>
+                    <MovieItem  item={item}/>
+                </div>
+              )
+              
+              
           })
       }
   }

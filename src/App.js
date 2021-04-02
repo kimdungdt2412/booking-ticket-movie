@@ -6,6 +6,7 @@ import HomeTemplate from './Container/HomeTemplate';
 import PageNotFound from './Container/PageNotFound';
 import SignUp from './Container/HomeTemplate/SignUp';
 import SignIn from './Container/HomeTemplate/SignIn';
+import { ToastContainer} from 'react-toastify';
 
 function App() {
 
@@ -34,13 +35,25 @@ function App() {
   // }
   return (
     <div>
+      
       <Router>
+      <ToastContainer
+      
+     
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover/>
         <Switch>
           {showLayoutHome(routeHome)}
 
           {/* <Route path='/auth' component={AuthPage} /> */}
           <Route path='/sign-in/' component={SignIn}/>
           <Route path='/sign-up' component={SignUp}/>
+          
           <Route path='' component={PageNotFound}/>
          
         </Switch>

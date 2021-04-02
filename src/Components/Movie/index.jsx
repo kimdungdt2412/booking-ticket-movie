@@ -17,12 +17,14 @@ export default function MovieItem(props) {
     return ratingStar;
   };
   return (
-    <div className="movie-item col-12 col-md-4 col-lg-3">
+    <div className="movie-item ">
       <div className="movie__content">
         <Link className="movie__main" to={`/detail-movie/${item.maPhim}`}>
-          <div className="img-movie">
-            <img src={item.hinhAnh} alt={item.biDanh} />
-            <div className="hoverInfo"></div>
+          <div className="img-movie" style={{
+                backgroundImage: `url(${item.hinhAnh})`
+              }}>
+            {/* <img src={item.hinhAnh} alt={item.biDanh} /> */}
+            <div className="hoverInfo showHover"></div>
             <div className="rating__star">
               <p className="point">{item.danhGia}</p>
               <p className="star">{renderStar()}</p>

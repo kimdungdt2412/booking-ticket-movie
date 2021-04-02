@@ -1,0 +1,91 @@
+.detail-movie {
+    .backgroundMain {
+        height: fit-content;
+        .styleBlur {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            .img-background {
+                filter: blur(15px);
+                margin: -11px 0 -5px -20px;
+                width: calc(100% + 30px);
+            }
+        }
+        .styleGradient {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+    }
+}
+
+.detail-movie {
+    @extend .styleTrailerModal;
+    .detailMainInfo {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        max-width: 900px;
+        .posterMovie {
+            .posterMovie__img {
+                border-radius: 4px;
+                padding-top: 147.90697674%;
+                background-position: center, 0 0;
+                background-size: 100% auto;
+                background-repeat: no-repeat, repeat-y;
+            }
+            .btn.trailer {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 3;
+                transition: all 0.2s;
+                opacity: 0;
+                &:hover {
+                    opacity: 1;
+                }
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+        }
+
+        .infoMain{
+            float: none;
+            clear: both;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 25%;
+            color: #e9e9e9;
+            .infoMain__time{
+                
+                font-size: 14px;
+            }
+            .infoMain__name{
+                font-size: 24px;
+                font-weight: 600;
+                letter-spacing: 2px;
+                
+            }
+
+            .btn.buyTicket{
+                margin: 20px 0;
+                @extend .custom-btn;
+                opacity: 1;
+                font-size: 16px;
+                padding: 0 30px;
+                &:hover{
+                    background-color: #b42a14;
+                }
+            }
+        }
+    }
+}

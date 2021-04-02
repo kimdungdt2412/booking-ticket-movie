@@ -14,7 +14,7 @@ function HomeLayout(props){
     )
 }
 export default function HomeTemplate({Component, ...props}) {
-    const {exact, path} = props
+  
   return (
     <Route
       {...props}

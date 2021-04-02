@@ -1,9 +1,7 @@
 import axios from "axios";
 import * as ActionType from "./../constant/constant";
 import Swal from "sweetalert2";
-import {
-    data
-} from "jquery";
+import {toast} from 'react-toastify'
 
 
 export const actLoginUserApi = (user, history) => {
@@ -17,22 +15,19 @@ export const actLoginUserApi = (user, history) => {
                 dispatch(actLoginUserSuccess(result.data))
                 localStorage.setItem("user", JSON.stringify(result.data));
 
-                Swal.fire({
-                    icon: "success",
-                    title: "Đăng nhập thành công",
-                    text: "",
-                    timer: 2000,
-                });
+                toast.success('Đăng nhập thành công', {
+                    position: "top-right",
+                    autoClose: 1000,
+                    });
                 history.push('/')
             })
             .catch((error) => {
+                console.log(error.response.data)
                 dispatch(actLoginUserFailed())
-                Swal.fire({
-                    icon: "error",
-                    title: "Đăng nhập thất bại",
-
-                    timer: 3000,
-                });
+                toast.error(`${error.response.data}`, {
+                    position: "top-right",
+                    autoClose: 2000,
+                })
             });
     };
 };
@@ -90,12 +85,11 @@ export const actLoginAdmin = (user, history) => {
                 });
             }
         }).catch(err => {
-            Swal.fire({
-                icon: "error",
-                title: "Đăng nhập thất bại",
-                text: err.response.data,
-                timer: 3000,
-            });
+            console.log(err)
+            toast.error(`Đăng nhập thất bại`, {
+                position: "top-right",
+                autoClose: 2000,
+            })
         })
 }
 
@@ -149,32 +143,30 @@ export const actResetInfoLoad = (stateLoad) => {
 
 export const actSignUpApi = (user, history) => {
     return dispatch => {
-       
+       dispatch(actSignUpRequest())
         axios({
                 method: "POST",
-                url: "http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangKy",
+                url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangKy",
                 data: user,
 
             })
             .then((result) => {
-                console.log(result)
-                dispatch(actSignUpRequest())
-                Swal.fire({
-                    icon: "success",
-                    title: "Đăng ký thành công",
-                    text: "",
-                    timer: 2000,
-                });
-                history.push('/')
+                
+                dispatch(actSignUpSuccess())
+                toast.success(`Đăng ký thành công`, {
+                    position: "top-right",
+                    autoClose: 2000,
+                })
+                history.push('/sign-in')
             })
             .catch((err) => {
+                toast.error(`Đăng kí thất bại`, {
+                    position: "top-right",
+                    autoClose: 2000,
+                })
                 dispatch(actSignUpFailed())
                 console.log(err)
-                Swal.fire({
-                    icon: "error",
-                    title: "Đăng ký thất bại!",
-                    timer: 3000,
-                });
+                
             });
     }
 }

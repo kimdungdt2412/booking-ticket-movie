@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SignUp(props) {
-  const classes = useStyles();
 
   const signupUserSchemaRegister = yup.object().shape({
     taiKhoan: yup.string().required("Tài khoản không được để trống!"),
@@ -160,11 +159,7 @@ function SignUp(props) {
               </Grid>
               <div className="btn-submit">
                 <Link to="/sign-in">Đã có tài khoản?</Link>
-                <Button type='submit' variant="contained" color="primary" onClick={
-                  (value) => {
-                    props.signUp(value, props.history)
-                  }
-                }>
+                <Button type='submit' variant="contained" color="primary" >
                   Đăng ký
                 </Button>
               </div>

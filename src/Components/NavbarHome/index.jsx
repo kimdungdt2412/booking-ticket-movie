@@ -4,11 +4,10 @@ import { NavLink, Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { actSetUserLogin } from "../../redux/action/userAction";
-import Avatar from "@material-ui/core/Avatar";
-import Swal from "sweetalert2";
+import { HashLink } from 'react-router-hash-link';
 import SettingsIcon from "@material-ui/icons/Settings";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import Badge from "@material-ui/core/Badge";
+import { toast } from "react-toastify";
 
 function NavbarHome(props) {
   useEffect(() => {
@@ -26,37 +25,20 @@ function NavbarHome(props) {
     const url = props.match;
 
     if (url.path === "/" || url.path === "/detail-muave/:id") {
-      Swal.fire({
-        icon: "success",
-        title: "Đã đăng xuất",
-        text: "",
+      toast.success("Đã đăng xuất", {
+        position: "top-right",
+        autoClose: 1500,
       });
     } else {
-      let timerInterval;
-      Swal.fire({
-        icon: "success",
-        title: "Đã đăng xuất",
-        text: "",
-        timer: 2000,
-        timerProgressBar: true,
-        onBeforeOpen: () => {
-          Swal.showLoading();
-          timerInterval = setInterval(() => {}, 100);
-        },
-
-        onClose: () => {
-          history.push(`/`);
-          clearInterval(timerInterval);
-        },
-      }).then((result) => {
-        if (result.dismiss === Swal.DismissReason.timer) {
-          history.push(`/`);
-        }
+      toast.success("Đã đăng xuất", {
+        position: "top-right",
+        autoClose: 1500,
       });
+      history.push(`/`);
     }
   }
   function renderLogin() {
-    if (props.user.taiKhoan) {
+    if (props.user && props.user.taiKhoan) {
       return (
         <div className="header__right__content">
           <div className="accountMenu dropdown">
@@ -166,7 +148,7 @@ function NavbarHome(props) {
   return (
     <header className="header fixed-top" id="header">
       <div className="header__content row">
-        <div className="header__left col-6 col-md-1 col-lg-2 col-xl-4">
+        <div className="header__left col-6 col-md-2 col-lg-2 col-xl-4">
           <Link to="/" className="header__logo">
             <img src="../../../img/web-logo.png" alt="tix.vn" />
           </Link>
@@ -174,19 +156,19 @@ function NavbarHome(props) {
         <div className="header__center col-12 col-md-6 col-lg-6 col-xl-4">
           <ul className="nav">
             <li className="nav-item">
-              <Link className="nav-link active" to="#text">
+              <HashLink smooth
+                className="nav-link active"
+                to='/#homeMovies'
+                data-scroll="homeMovies"
+              >
                 Lịch Chiếu
-              </Link>
+              </HashLink>
             </li>
+
             <li className="nav-item">
-              <Link className="nav-link active" to="/list-movie">
-                Danh sách phim
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="#">
+              <HashLink className="nav-link" to="/#">
                 Cụm rạp
-              </Link>
+              </HashLink>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="#">
@@ -195,7 +177,7 @@ function NavbarHome(props) {
             </li>
           </ul>
         </div>
-        <div className="header__right col-6 col-md-5 col-lg-4 col-xl-4">
+        <div className="header__right col-6 col-md-4 col-infoUser col-lg-4 col-xl-4">
           {renderLogin()}
         </div>
         <div className="header__right__mobile col-6">

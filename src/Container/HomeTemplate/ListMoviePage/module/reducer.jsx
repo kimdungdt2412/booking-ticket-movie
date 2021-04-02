@@ -13,7 +13,7 @@ const listMovieReducer = (state = initialState, action) => {
         ...state,
       };
     case ActionType.GET_LIST_MOVIE_SUCCESS:
-      console.log(action.payload);
+      
       state.list = action.payload;
       state.loading = false;
       return {
