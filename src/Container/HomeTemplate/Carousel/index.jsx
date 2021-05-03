@@ -1,4 +1,12 @@
 import React from "react";
+import carousel5 from '../../../Assets/img/carousel05.png'
+import carousel1 from '../../../Assets/img/carousel01.jpg'
+import carousel2 from '../../../Assets/img/carousel02.jpg'
+import carousel3 from '../../../Assets/img/carousel03.jpg'
+import carousel4 from '../../../Assets/img/carousel04.jpg'
+import play from '../../../Assets/img/play-video.png'
+import close from '../../../Assets/img/close.png'
+
 
 export default function Carousel() {
   return (
@@ -18,7 +26,7 @@ export default function Carousel() {
       <div className="carousel-inner">
         <div className="carousel-item active">
           <img
-            src="./img/carousel05.png"
+            src={carousel5}
             className="d-block w-100"
             alt="tix3"
           />
@@ -27,22 +35,22 @@ export default function Carousel() {
             data-toggle="modal"
             data-target="#videoModal05"
           >
-            <img src="./img/play-video.png" alt = 'tix' />
+            <img src={play} className='play' alt = 'tix' />
           </button>
         </div>
         <div className="carousel-item">
-          <img src="./img/carousel02.jpg" className="d-block w-100" alt="tix" />
+          <img src={carousel2} className="d-block w-100" alt="tix" />
           <button
             className="btn trailer"
             data-toggle="modal"
             data-target="#videoModal02"
           >
-            <img src="./img/play-video.png" alt ='tix' />
+            <img src={play} className='play' alt ='tix' />
           </button>
         </div>
         <div className="carousel-item">
           <img
-            src="./img/carousel03.jpg"
+            src={carousel3}
             className="d-block w-100"
             alt="tix2"
           />
@@ -51,12 +59,12 @@ export default function Carousel() {
             data-toggle="modal"
             data-target="#videoModal03"
           >
-            <img src="./img/play-video.png" alt ='tix'/>
+            <img src={play} className='play' alt ='tix'/>
           </button>
         </div>
         <div className="carousel-item">
           <img
-            src="./img/carousel04.jpg"
+            src={carousel4}
             className="d-block w-100"
             alt="tix3"
           />
@@ -65,12 +73,12 @@ export default function Carousel() {
             data-toggle="modal"
             data-target="#videoModal04"
           >
-            <img src="./img/play-video.png" alt ='tix'/>
+            <img src={play} className='play' alt ='tix'/>
           </button>
         </div>
         <div className="carousel-item ">
           <img
-            src="./img/carousel01.jpg"
+            src={carousel1}
             className="d-block w-100"
             alt="tix4"
           />
@@ -79,7 +87,7 @@ export default function Carousel() {
             data-toggle="modal"
             data-target="#videoModal01"
           >
-            <img src="./img/play-video.png" alt ='tix'/>
+            <img src={play} className='play' alt ='tix'/>
           </button>
         </div>
       </div>
@@ -119,7 +127,7 @@ export default function Carousel() {
                   data-dismiss="modal"
                   aria-label="Close"
                 >
-                  <img src="./img/close.png" />
+                  <img src={close} />
                 </button>
                 <iframe
                   width="100%"
@@ -148,7 +156,7 @@ export default function Carousel() {
                   data-dismiss="modal"
                   aria-label="Close"
                 >
-                  <img src="./img/close.png" />
+                  <img src={close} />
                 </button>
                 <iframe
                   width="560"
@@ -179,7 +187,7 @@ export default function Carousel() {
                   data-dismiss="modal"
                   aria-label="Close"
                 >
-                  <img src="./img/close.png" />
+                  <img src={close} />
                 </button>
                 <iframe
                   width="560"
@@ -209,7 +217,7 @@ export default function Carousel() {
                   data-dismiss="modal"
                   aria-label="Close"
                 >
-                  <img src="./img/close.png" />
+                  <img src={close} />
                 </button>
                 <iframe
                   width="560"
@@ -239,7 +247,7 @@ export default function Carousel() {
                   data-dismiss="modal"
                   aria-label="Close"
                 >
-                  <img src="./img/close.png" />
+                  <img src={close} />
                 </button>
                 <iframe
                   width="560"

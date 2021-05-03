@@ -1,5 +1,4 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
@@ -9,14 +8,8 @@ import * as yup from "yup";
 import { Formik, Form } from "formik";
 import {actSignUpApi} from '../../../redux/action/userAction'
 import {connect} from 'react-redux'
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: "90%",
-    },
-  },
-}));
+import logo from '../../../Assets/img/11.png'
+
 
 function SignUp(props) {
 
@@ -47,7 +40,7 @@ function SignUp(props) {
           <Link to="/">X</Link>
         </button>
         <Link to="/">
-          <img src="../img/11.png" alt="tix" />
+          <img src={logo} alt="tix" />
         </Link>
 
         <p>
@@ -70,11 +63,12 @@ function SignUp(props) {
             props.signUp(value, props.history)
           }}
         >
-          {({ errors, handleChange, touched }) => (
+          {({ errors, handleChange, touched , handleBlur}) => (
             <Form >
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                   <TextField
+                  onBlur={handleBlur}
                     onChange={handleChange}
                     error={errors.taiKhoan && touched.taiKhoan}
                     helperText={
@@ -93,6 +87,7 @@ function SignUp(props) {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
+                  onBlur={handleBlur}
                     onChange={handleChange}
                     error={errors.hoTen && touched.hoTen}
                     helperText={
@@ -109,6 +104,7 @@ function SignUp(props) {
 
                 <Grid item xs={12} sm={6}>
                   <TextField
+                  onBlur={handleBlur}
                     onChange={handleChange}
                     error={errors.email && touched.email}
                     helperText={
@@ -125,6 +121,7 @@ function SignUp(props) {
 
                 <Grid item xs={12} sm={6}>
                   <TextField
+                  onBlur={handleBlur}
                     onChange={handleChange}
                     error={errors.soDt && touched.soDt}
                     helperText={
@@ -142,6 +139,7 @@ function SignUp(props) {
 
                 <Grid item xs={12}>
                   <TextField
+                  onBlur={handleBlur}
                     onChange={handleChange}
                     error={errors.matKhau && touched.matKhau}
                     helperText={

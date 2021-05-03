@@ -1,7 +1,11 @@
 
+
+import Theaters from '../Components/Theaters';
+import CinemaPage from '../Container/HomeTemplate/CinemaPage';
 import DetailPage from '../Container/HomeTemplate/DetailPage';
 import HomePage from '../Container/HomeTemplate/HomePage';
 import ListMoviePage from '../Container/HomeTemplate/ListMoviePage';
+import UserPage from '../Container/HomeTemplate/UserPage';
 
 
 const routeHome = [
@@ -22,11 +26,18 @@ const routeHome = [
         component: ListMoviePage,
         exact: false,
     },
-    // {
-    //     path: '/hook',
-    //     component: Hook,
-    //     exact: false,
-    // },
+    {
+        path: '/info-user',
+        component: UserPage,
+        exact: false,
+    },
+    {
+        path: '/cum-rap',
+        component: CinemaPage,
+        exact: false,
+    }
+   
+    
     
 
 ]

@@ -195,3 +195,23 @@
         width: 900px;
     }
 }
+
+@keyframes loadingAnimation {
+    from {
+        opacity: 1;
+        transform: scale3d(1,1,1)
+    }
+
+    10%,30%,50%,70%,90% {
+        transform: scale3d(1.1,1.1,1.1) rotate3d(0,0,1,7deg)
+    }
+
+    20%,40%,60%,80% {
+        transform: scale3d(1.1,1.1,1.1) rotate3d(0,0,1,-7deg)
+    }
+
+    to {
+        opacity: 0;
+        transform: scale3d(1,1,1)
+    }
+}

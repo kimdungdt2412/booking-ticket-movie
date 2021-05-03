@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { actLoginUserApi } from "../../../redux/action/userAction";
 import { Formik, Form } from "formik";
 import * as yup from "yup";
+import logo from '../../../Assets/img/11.png'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,7 +36,7 @@ function SignIn(props) {
           <Link to="/">X</Link>
         </button>
         <Link to="/">
-          <img src="../img/11.png" alt="tix" />
+          <img src={logo} alt="tix" />
         </Link>
 
         <p>
@@ -51,7 +52,7 @@ function SignIn(props) {
           }}
           validationSchema={signinUserSchemaLogin}
           onSubmit={(value) => {
-            props.loginUser(value, props.history);
+            props.loginUser(value, props.history, props.bookingId);
           }}
         >
           {({ errors, touched, handleBlur, handleChange }) => (
@@ -104,13 +105,17 @@ function SignIn(props) {
     </section>
   );
 }
-
+const mapStateToProps = state => {
+    return {
+      bookingId: state.userReducer.maLichChieu
+    }
+}
 const mapDispatchToProps = (dispatch) => {
   return {
-    loginUser: (user, history) => {
-      dispatch(actLoginUserApi(user, history));
+    loginUser: (user, history, id) => {
+      dispatch(actLoginUserApi(user, history, id));
     },
   };
 };
 
-export default connect(null, mapDispatchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

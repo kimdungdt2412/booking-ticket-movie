@@ -1,6 +1,7 @@
 import { Button } from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
+import star from '../../Assets/img/star1.png'
 
 export default function MovieItem(props) {
   let { item } = props;
@@ -10,7 +11,7 @@ export default function MovieItem(props) {
       let i = 0;
       for (i; i < Number(item.danhGia)/2; i++) {
         ratingStar.push(
-          <img key={i} src="./img/star1.png" alt="star" className="smallStar" />
+          <img key={i} src={star} alt="star" className="smallStar" />
         );
       }
     }

@@ -1,10 +1,12 @@
 import axios from "axios";
 import * as ActionType from "./../constant/constant";
 import Swal from "sweetalert2";
-import {toast} from 'react-toastify'
+import {
+    toast
+} from 'react-toastify'
 
 
-export const actLoginUserApi = (user, history) => {
+export const actLoginUserApi = (user, history, id) => {
     return (dispatch) => {
         dispatch(actLoginUserRequest())
         axios({
@@ -15,11 +17,13 @@ export const actLoginUserApi = (user, history) => {
                 dispatch(actLoginUserSuccess(result.data))
                 localStorage.setItem("user", JSON.stringify(result.data));
 
-                toast.success('Đăng nhập thành công', {
-                    position: "top-right",
-                    autoClose: 1000,
-                    });
-                history.push('/')
+                if(id===0){
+                    history.push('/')
+                }
+                else{
+                    history.goBack()
+                }
+                
             })
             .catch((error) => {
                 console.log(error.response.data)
@@ -94,23 +98,10 @@ export const actLoginAdmin = (user, history) => {
 }
 
 
-export const actGetListUser = () => {
-    return dispatch => {
-        axios({
-            method: "GET",
-            url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP05",
-        }).then(result => {
-            dispatch({
-                type: ActionType.GET_LIST_USER,
-                listUser: result.data,
-            });
-        }).catch(err => {
-            console.log(err);
-        })
-    }
-}
+
 
 export const actGetInfoUser = user => {
+ 
     return dispatch => {
         axios({
                 method: "POST",
@@ -132,18 +123,11 @@ const actGetInfoUserSuccess = (data) => {
         payload: data,
     }
 }
-export const actResetInfoLoad = (stateLoad) => {
-    return (dispatch) => {
-        dispatch({
-            type: ActionType.RESET_LOAD_INFO_USER,
-            loadingInfo: stateLoad,
-        });
-    };
-};
+
 
 export const actSignUpApi = (user, history) => {
     return dispatch => {
-       dispatch(actSignUpRequest())
+        dispatch(actSignUpRequest())
         axios({
                 method: "POST",
                 url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangKy",
@@ -151,7 +135,7 @@ export const actSignUpApi = (user, history) => {
 
             })
             .then((result) => {
-                
+
                 dispatch(actSignUpSuccess())
                 toast.success(`Đăng ký thành công`, {
                     position: "top-right",
@@ -166,7 +150,7 @@ export const actSignUpApi = (user, history) => {
                 })
                 dispatch(actSignUpFailed())
                 console.log(err)
-                
+
             });
     }
 }
@@ -186,5 +170,59 @@ const actSignUpSuccess = () => {
 const actSignUpFailed = () => {
     return {
         type: ActionType.USER_LOGIN_FAILED
+    }
+}
+
+export const actLoginBeforeBooking = (id) => {
+    return {
+        type: ActionType.LOGIN_BEFORE_BOOKING,
+        payload: id,
+
+    }
+}
+
+export const actResetBookingId = () => {
+    return {
+        type: ActionType.RESET_BOOKING_ID
+    }
+}
+
+export const actEditUserApi = (user) => {
+    let getUser = localStorage.getItem("user");
+    let _user = JSON.parse(getUser)
+    return dispatch => {
+        dispatch({
+            type: ActionType.EDIT_USER_REQUEST
+        })
+        axios({
+                method: "PUT",
+                url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+                data: user,
+                headers: { Authorization: "Bearer " + _user.accessToken },
+
+            })
+            .then((result) => {
+                console.log(result.data)
+                dispatch({
+                    type: ActionType.EDIT_USER_SUCCESS,
+                    payload: result.data
+                })
+                toast.success(`Chỉnh sửa thông tin cá nhân thành công`, {
+                    position: "top-center",
+                    autoClose: 2000,
+                })
+              
+            })
+            .catch((err) => {
+                toast.error(`Chỉnh sửa thông tin cá nhân thất bại`, {
+                    position: "top-center",
+                    autoClose: 2000,
+                })
+                dispatch({
+                    type: ActionType.EDIT_USER_FAILED
+                })
+
+
+            });
     }
 }

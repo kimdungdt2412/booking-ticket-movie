@@ -5,10 +5,14 @@ $color-white-1: #eee;
 $color-red-1: #fb4226;
 $color-green-0: #108f3e;
 $color-green-1: #8bc541;
+$color-green-2: #7ed321;
+$color-green-3: #44c020;
+$color-yellow:  #f7b500;
 $color-pink: #df0d7a;
 $color-yellow: #e5a813;
 $color-orange: #ca4137;
 $color-blue: #60c5ef;
+$color-dark-blue: #3e515d;
 
 $color-grey-0: #9b9b9b;
 
@@ -50,6 +54,6 @@ $fw-bold: bold;
 $breakpoints:(
     'extra-large': 1200px,
     'large' : 992px,
-    'medium' : 768px,
+    'medium' : 767px,
     'small' : 576px,
 )

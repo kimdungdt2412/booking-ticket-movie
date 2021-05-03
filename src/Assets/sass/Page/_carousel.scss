@@ -1,10 +1,13 @@
 .carousel {
     margin-top: 60px;
     .carousel-indicators {
+        bottom: 12%;
+        z-index: 5;
         li {
             width: 12px;
             height: 12px;
             border-radius: 100%;
+            opacity: 0.8;
         }
         li.active {
             background-color: $color-red-1;
@@ -77,9 +80,23 @@
 }
 
 @include responsive("medium") {
-    .carousel {
-        display: none;
+   .carousel{
+    .carousel-indicators{
+        bottom: 5%;
+        li{
+            width: 10px;
+            height: 10px;
+        }
     }
+    .carousel-inner{
+        .carousel-item{
+            .btn.trailer{
+                display: none;
+            }
+        }
+    }
+  
+   }
 }
 
 @media (min-width: 768px) {

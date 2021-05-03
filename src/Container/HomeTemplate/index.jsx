@@ -1,5 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
+import Footer from "../../Components/Footer";
 import NavbarHome from '../../Components/NavbarHome';
 
 
@@ -9,6 +10,7 @@ function HomeLayout(props){
             <NavbarHome/>
             
             {props.children}
+            <Footer/>
             
         </div>
     )

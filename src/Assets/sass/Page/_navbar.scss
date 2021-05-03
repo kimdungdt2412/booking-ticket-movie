@@ -173,6 +173,17 @@
                         text-decoration: none;
                     }
                 }
+                .dropdown-menu{
+                    
+                    @extend .custom-dropdownMenu;
+                    top: 20px!important;
+                }
+                p {
+                    text-align: center;
+                    color: rgb(102, 102, 102);
+                    margin-bottom: 10px;
+                    font-size: 12px;
+                }
             }
 
             button.close-btn {

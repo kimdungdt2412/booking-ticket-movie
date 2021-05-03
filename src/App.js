@@ -7,6 +7,7 @@ import PageNotFound from './Container/PageNotFound';
 import SignUp from './Container/HomeTemplate/SignUp';
 import SignIn from './Container/HomeTemplate/SignIn';
 import { ToastContainer} from 'react-toastify';
+import BookingPage from './Container/HomeTemplate/BookingPage';
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
           {/* <Route path='/auth' component={AuthPage} /> */}
           <Route path='/sign-in/' component={SignIn}/>
           <Route path='/sign-up' component={SignUp}/>
+          <Route path='/booking/:id' component={BookingPage}/>
           
           <Route path='' component={PageNotFound}/>
          

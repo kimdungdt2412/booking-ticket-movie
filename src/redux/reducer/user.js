@@ -5,6 +5,10 @@ const initialState = {
     listUser: [],
     infoUser: {},
     isLoading: false,
+    maLichChieu: 0,
+    isRequest: false,
+    isSuccess: false,
+    thongTinDatVe: []
 };
 
 const userReducer = (state = initialState, action) => {
@@ -33,15 +37,47 @@ const userReducer = (state = initialState, action) => {
                 ...state
             };
 
-        case ActionType.GET_LIST_USER:
-            state.listUser = action.listUser;
+        case ActionType.GET_INFO_USER:
+            state.infoUser = action.payload;
+            let info = {...state.infoUser}
+            state.thongTinDatVe = info.thongTinDatVe;
+
             return {
                 ...state
             };
 
-        case ActionType.GET_INFO_USER:
-            state.infoUser = action.payload;
+        case ActionType.LOGIN_BEFORE_BOOKING:
+            state.maLichChieu = action.payload;
+            return {
+                ...state
+            };
 
+        case ActionType.RESET_BOOKING_ID:
+            state.maLichChieu = 0;
+            return {
+                ...state
+            };
+
+
+        case ActionType.EDIT_USER_REQUEST:
+            state.isRequest = true;
+            state.isSuccess = false;
+            return {
+                ...state
+            };
+
+        case ActionType.EDIT_USER_SUCCESS:
+            state.isRequest = false;
+            state.isSuccess = true;
+            state.user = action.payload;
+            state.infoUser = action.payload;
+            return {
+                ...state
+            };
+
+        case ActionType.EDIT_USER_FAILED:
+            state.isRequest = false;
+            state.isSuccess = false;
             return {
                 ...state
             };

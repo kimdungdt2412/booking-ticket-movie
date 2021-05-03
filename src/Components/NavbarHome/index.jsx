@@ -1,44 +1,44 @@
 import React, { Component, useEffect } from "react";
-import { withRouter } from "react-router-dom";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link , useHistory} from "react-router-dom";
 
-import { connect } from "react-redux";
-import { actSetUserLogin } from "../../redux/action/userAction";
+import { useDispatch, useSelector } from "react-redux";
+import { actSetUserLogin , actGetInfoUser} from "../../redux/action/userAction";
 import { HashLink } from 'react-router-hash-link';
 import SettingsIcon from "@material-ui/icons/Settings";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { toast } from "react-toastify";
+import avatar from '../../Assets/img/kirby.jpg'
+import session from '../../Assets/img/next-session.png'
+import option from '../../Assets/img/menu-options.png'
+import noneUser from '../../Assets/img/avatar.png'
+import logo from '../../Assets/img/web-logo.png'
 
-function NavbarHome(props) {
+
+export default function NavbarHome(props) {
+  const dispatch = useDispatch()
+  let history = useHistory()
+  const {user} = useSelector(state => state.userReducer)
   useEffect(() => {
     let user = JSON.parse(localStorage.getItem("user"));
-    if (user) {
-      props.setUserLogin(user);
-    }
+    dispatch(actSetUserLogin(user))
   }, []);
 
   function handleOnClick() {
-    let { history } = props;
+    
 
     localStorage.removeItem("user");
-    props.setUserLogin({});
-    const url = props.match;
-
-    if (url.path === "/" || url.path === "/detail-muave/:id") {
-      toast.success("Đã đăng xuất", {
-        position: "top-right",
-        autoClose: 1500,
-      });
-    } else {
+    dispatch(actSetUserLogin({}))
+   
       toast.success("Đã đăng xuất", {
         position: "top-right",
         autoClose: 1500,
       });
       history.push(`/`);
-    }
+    
   }
   function renderLogin() {
-    if (props.user && props.user.taiKhoan) {
+
+    if (user && user.taiKhoan) {
       return (
         <div className="header__right__content">
           <div className="accountMenu dropdown">
@@ -51,19 +51,19 @@ function NavbarHome(props) {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <img src="./img/kirby.jpg" alt="avatar" />
-              <span className="name">{props.user.hoTen}</span>
+              <img src={avatar} alt="avatar" />
+              <span className="name">{user.hoTen}</span>
             </a>
 
             <div className="dropdown-menu" aria-labelledby="dropdownMenuUser">
-              <p className="name">{props.user.hoTen}</p>
+              <p className="name">{user.hoTen}</p>
               <Link className="dropdown-item" to="/info-user">
                 <SettingsIcon style={{ fontSize: 30 }} />
                 <span>Thông tin tài khoản</span>
               </Link>
               <Link className="dropdown-item" to="/" onClick={handleOnClick}>
                 <ExitToAppIcon style={{ fontSize: 30 }} />
-                <span>Logout</span>
+                <span>Đăng xuất</span>
               </Link>
             </div>
           </div>
@@ -74,11 +74,11 @@ function NavbarHome(props) {
         <>
           <div className="header__right__content">
             <NavLink to="./sign-in/" className="login">
-              <img src="../../../img/avatar.png" alt="tix.vn" />
+              <img src={noneUser} alt="tix.vn" />
               <p>Đăng Nhập</p>
             </NavLink>
             <NavLink to="./sign-up/" className="login">
-              <img src="../../../img/avatar.png" alt="tix.vn" />
+              <img src={noneUser} alt="tix.vn" />
               <p>Đăng Ký</p>
             </NavLink>
           </div>
@@ -88,7 +88,7 @@ function NavbarHome(props) {
   }
 
   function renderLoginMobile() {
-    if (props.user.taiKhoan) {
+    if (user && user.taiKhoan) {
       return (
         <>
           <div className="accountMenu dropdown">
@@ -101,12 +101,12 @@ function NavbarHome(props) {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <img src="./img/kirby.jpg" alt="avatar" />
-              <span className="name">{props.user.hoTen}</span>
+              <img src={avatar} alt="avatar" />
+              <span className="name">{user.hoTen}</span>
             </a>
 
             <div className="dropdown-menu" aria-labelledby="dropdownMenuUser">
-              <p className="name">{props.user.hoTen}</p>
+              <p className="name">{user.hoTen}</p>
               <Link className="dropdown-item" to="/info-user">
                 <SettingsIcon style={{ fontSize: 30 }} />
                 <span>Thông tin tài khoản</span>
@@ -123,7 +123,7 @@ function NavbarHome(props) {
       return (
         <>
           <NavLink to="/sign-in/" className="isLogin">
-            <img src="../../../img/avatar.png" alt="tix.vn" />
+            <img src={noneUser} alt="tix.vn" />
             <p>Đăng Nhập</p>
           </NavLink>
         </>
@@ -150,7 +150,7 @@ function NavbarHome(props) {
       <div className="header__content row">
         <div className="header__left col-6 col-md-2 col-lg-2 col-xl-4">
           <Link to="/" className="header__logo">
-            <img src="../../../img/web-logo.png" alt="tix.vn" />
+            <img src={logo} alt="tix.vn" />
           </Link>
         </div>
         <div className="header__center col-12 col-md-6 col-lg-6 col-xl-4">
@@ -166,7 +166,7 @@ function NavbarHome(props) {
             </li>
 
             <li className="nav-item">
-              <HashLink className="nav-link" to="/#">
+              <HashLink smooth className="nav-link" to="/#cinema">
                 Cụm rạp
               </HashLink>
             </li>
@@ -175,14 +175,20 @@ function NavbarHome(props) {
                 Tin Tức
               </Link>
             </li>
+
+            <li className="nav-item">
+              <HashLink smooth className="nav-link" to="/">
+                Ứng dụng
+              </HashLink>
+            </li>
           </ul>
         </div>
-        <div className="header__right col-6 col-md-4 col-infoUser col-lg-4 col-xl-4">
+        <div className="header__right col-6 col-md-4 col-infoUser ">
           {renderLogin()}
         </div>
         <div className="header__right__mobile col-6">
           <button className="btn" id="open-sideMenu" onClick={openSideMenu}>
-            <img src="./img/menu-options.png" alt="tix.vn" />
+            <img src={option} alt="tix.vn" />
           </button>
         </div>
 
@@ -197,17 +203,17 @@ function NavbarHome(props) {
               >
                 <img
                   className="close-btn"
-                  src="./img/next-session.png"
+                  src={session}
                   alt="tix.vn"
                 />
               </button>
             </span>
-            <Link className="sideNav__item" to="#" onClick={closeSideMenu}>
+            <HashLink smooth className="sideNav__item" to="/list-movie" onClick={closeSideMenu}>
               Lịch Chiếu
-            </Link>
-            <Link className="sideNav__item" to="#" onClick={closeSideMenu}>
+            </HashLink>
+            <HashLink smooth className="sideNav__item" to="/cum-rap" onClick={closeSideMenu}>
               Cụm rạp
-            </Link>
+            </HashLink>
             <Link className="sideNav__item" to="#" onClick={closeSideMenu}>
               Tin Tức
             </Link>
@@ -218,21 +224,4 @@ function NavbarHome(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.userReducer.user,
-  };
-};
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setUserLogin: (user) => {
-      dispatch(actSetUserLogin(user));
-    },
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRouter(NavbarHome));

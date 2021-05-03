@@ -3,6 +3,11 @@
   margin: 0 200px;
   text-align: right;
 
+  .slick-slider {
+    max-width: 940px;
+    margin: 0 auto;
+  }
+
   .slick-track {
     display: flex !important;
     .slick-slide {
@@ -68,7 +73,7 @@
     height: 100%;
     background-color: white;
     .movie-item {
-      width: 90%;
+      width: 100%;
       padding: 20px 10px 0;
       margin-bottom: 40px;
     }
@@ -96,4 +101,46 @@
       }
     }
   }
+}
+
+@include responsive("medium") {
+  .cinema {
+    display: none;
+  }
+}
+
+.pageNotFound {
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  .text{
+    text-align: center;
+  }
+  h1 {
+    color: $color-orange;
+    font-size: 200px;
+    
+  }
+  h4 {
+    font-size: 70px;
+  }
+  .btn {
+    margin-top: 20px;
+    padding: 20px 30px;
+    background-color: $color-orange;
+    border-radius: 10px;
+    opacity: 0.75;
+    transition: all .5s;
+    a {
+      font-size: 20px;
+      text-decoration: none;
+      color: $color-white-0;
+    }
+    &:hover{
+      opacity: 1;
+    }
+  }
+  
 }

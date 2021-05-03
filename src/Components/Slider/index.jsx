@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { Button } from "@material-ui/core";
 import Slider from "react-slick";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { actGetListMovieApi } from "../../Container/HomeTemplate/ListMoviePage/module/action";
 import { Link } from "react-router-dom";
 import MovieItem from "../Movie";
+import Loader from "../Loader";
 
 const settings = {
   infinite: true,
@@ -38,59 +38,53 @@ const settings = {
         slidesToShow: 2,
         slidesToScroll: 2,
         initialSlide: 2,
-        
-      
       },
     },
     {
-        breakpoint: 700,
+      breakpoint: 700,
       settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        initialSlide: 1,
-      
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2,
+        dots: true,
+        arrows: false,
       },
-    }
+    },
   ],
 };
 
 function SliderMovie(props) {
+  const { list, loading } = useSelector((state) => state.listMovieReducer);
+  const dispatch = useDispatch();
   useEffect(() => {
-    if (props.listMovie.length === 0) {
-      props.getListMovie();
-    }
+    dispatch(actGetListMovieApi());
   }, []);
 
   function renderSlider() {
-    if (props.listMovie.length > 0) {
-      return props.listMovie.map((item, index) => {
+    if (list.length > 0) {
+      return list.map((item, index) => {
         return (
-            <div className="slider-item" key={index}>
-                <MovieItem item={item}/>
-            </div>
-          
+          <div className="slider-item" key={index}>
+            <MovieItem item={item} />
+          </div>
         );
       });
     }
   }
   return (
-    <div className="movie-slick" id='homeMovies'>
-      <Link to="/list-movie" className='btn btn-all'>Xem tất cả</Link>
-      <Slider {...settings}>{renderSlider()}</Slider>
-    </div>
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="movie-slick" id="homeMovies">
+          <Link to="/list-movie" className="btn btn-all">
+            Xem tất cả
+          </Link>
+          <Slider {...settings}>{renderSlider()}</Slider>
+        </div>
+      )}
+    </>
   );
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getListMovie: () => {
-      dispatch(actGetListMovieApi());
-    },
-  };
-};
-const mapStateToProps = (state) => {
-  return {
-    listMovie: state.listMovieReducer.list,
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(SliderMovie);
+export default SliderMovie;
