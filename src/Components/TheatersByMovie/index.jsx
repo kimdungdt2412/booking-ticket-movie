@@ -83,7 +83,7 @@ export default function TheatersByMovie() {
   };
 
   const { listCinema, schedule } = useSelector((state) => state.cinemaReducer);
-  const { lichChieu, infoMovie } = useSelector((state) => state.movieReducer);
+  const { infoMovie } = useSelector((state) => state.movieReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {

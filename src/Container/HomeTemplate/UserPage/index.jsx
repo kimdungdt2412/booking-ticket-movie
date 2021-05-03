@@ -170,7 +170,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function UserPage() {
   const classes = useStyles();
-  const { user, infoUser, isRequest, isSuccess, thongTinDatVe } = useSelector(
+  const { infoUser, isRequest, isSuccess, thongTinDatVe } = useSelector(
     (state) => state.userReducer
   );
   const dispatch = useDispatch();
@@ -218,6 +218,7 @@ export default function UserPage() {
     let getUser = localStorage.getItem("user");
     let _user = JSON.parse(getUser);
     dispatch(actGetInfoUser({ taiKhoan: _user.taiKhoan }));
+
   }, []);
 
   useEffect(() => {

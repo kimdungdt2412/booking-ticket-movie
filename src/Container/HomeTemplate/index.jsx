@@ -27,10 +27,6 @@ export default function HomeTemplate({Component, ...props}) {
       )}
       
     />
-    // <div>
-    //   <NavbarHome/>
-    //   <Carousel/>
-    
-    // </div>
+ 
   );
 }

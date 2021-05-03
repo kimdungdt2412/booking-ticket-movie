@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router";
 import { actGetListCinemaByMovieIdApi } from "../../redux/action/cinema";
 
-import { toast } from "react-toastify";
-
 export default function HomeTools() {
-
   const { list } = useSelector((state) => state.listMovieReducer);
   const { listCinemaByMovie } = useSelector((state) => state.cinemaReducer);
   const dispatch = useDispatch();
@@ -190,6 +186,7 @@ export default function HomeTools() {
             if (found) {
             } else {
               mangNgayChieu.push(day);
+              return
             }
           });
         });

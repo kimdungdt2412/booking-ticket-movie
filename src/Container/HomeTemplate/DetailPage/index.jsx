@@ -3,8 +3,6 @@ import { useParams } from "react-router-dom";
 import { actGetInfoMovieApi } from "../../../redux/action/movie";
 import { actGetListScheduleByTheaterId } from "../../../redux/action/cinema";
 import { useSelector, useDispatch } from "react-redux";
-import BeatLoader from "react-spinners/BeatLoader";
-import { css } from "@emotion/core";
 import { HashLink } from "react-router-hash-link";
 import star from "../../../Assets/img/star1.png";
 import PropTypes from "prop-types";
@@ -18,11 +16,7 @@ import Loader from "../../../Components/Loader";
 import avatar from "../../../Assets/img/avatar.png";
 import StarIcon from "@material-ui/icons/Star";
 
-const override = css`
-  display: block;
-  margin: 300px auto;
-  text-align: center;
-`;
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

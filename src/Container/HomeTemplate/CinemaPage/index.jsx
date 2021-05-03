@@ -12,7 +12,6 @@ import Tab from "@material-ui/core/Tab";
 import BackNews from "../../../Assets/img/back-news.png";
 import MovieByTheater from "../../../Components/MovieByCinema";
 import imgTheater from "../../../Assets/img/bhd-star-bitexco-16105952137769.png";
-import { Link } from "react-router-dom";
 import List from "@material-ui/core/List";
 
 function TabPanel(props) {

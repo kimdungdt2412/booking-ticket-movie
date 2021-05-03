@@ -7,14 +7,6 @@ import {actGetListMovieApi} from './module/action'
 import Loader from "../../../Components/Loader";
 
 
-const override = css`
-  display: block;
-  margin: 150px auto;
-  text-align: center;
-  
-
-  
-`;
 
 function ListMoviePage(props) {
   const [state, setstate] = useState();

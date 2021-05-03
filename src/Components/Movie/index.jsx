@@ -24,7 +24,7 @@ export default function MovieItem(props) {
           <div className="img-movie" style={{
                 backgroundImage: `url(${item.hinhAnh})`
               }}>
-            {/* <img src={item.hinhAnh} alt={item.biDanh} /> */}
+       
             <div className="hoverInfo showHover"></div>
             <div className="rating__star">
               <p className="point">{item.danhGia}</p>

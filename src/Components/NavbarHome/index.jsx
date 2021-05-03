@@ -1,8 +1,8 @@
-import React, { Component, useEffect } from "react";
+import React, {  useEffect } from "react";
 import { NavLink, Link , useHistory} from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { actSetUserLogin , actGetInfoUser} from "../../redux/action/userAction";
+import { actSetUserLogin } from "../../redux/action/userAction";
 import { HashLink } from 'react-router-hash-link';
 import SettingsIcon from "@material-ui/icons/Settings";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
@@ -14,7 +14,7 @@ import noneUser from '../../Assets/img/avatar.png'
 import logo from '../../Assets/img/web-logo.png'
 
 
-export default function NavbarHome(props) {
+export default function NavbarHome() {
   const dispatch = useDispatch()
   let history = useHistory()
   const {user} = useSelector(state => state.userReducer)

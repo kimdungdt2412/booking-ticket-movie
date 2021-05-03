@@ -36,7 +36,6 @@ export default function TheaterItem(props) {
   let tenHeThong = tenCumRap[0];
   let tenChiNhanh = tenCumRap[1];
 
-  const { infoMovie } = useSelector((state) => state.movieReducer);
 
   function renderTime() {
     if (theater.danhSachPhim.length > 0) {
