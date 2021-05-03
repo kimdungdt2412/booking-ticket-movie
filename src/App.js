@@ -23,17 +23,7 @@ function App() {
     }
   };
 
-  // const showLayoutAdmin = (route) => {
-  //   if(route && route.length > 0)
-  //   {
-  //     return route.map((item, index) => {
-  //       return (
-  //         <AdminTemplate key={index} path={item.path} Component={item.component} exact={item.exact}/>
-  //       )
-        
-  //     })
-  //   }
-  // }
+
   return (
     <div>
       
@@ -51,7 +41,7 @@ function App() {
         <Switch>
           {showLayoutHome(routeHome)}
 
-          {/* <Route path='/auth' component={AuthPage} /> */}
+       
           <Route path='/sign-in/' component={SignIn}/>
           <Route path='/sign-up' component={SignUp}/>
           <Route path='/booking/:id' component={BookingPage}/>

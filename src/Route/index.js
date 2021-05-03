@@ -1,6 +1,4 @@
 
-
-import Theaters from '../Components/Theaters';
 import CinemaPage from '../Container/HomeTemplate/CinemaPage';
 import DetailPage from '../Container/HomeTemplate/DetailPage';
 import HomePage from '../Container/HomeTemplate/HomePage';
@@ -35,27 +33,14 @@ const routeHome = [
         path: '/cum-rap',
         component: CinemaPage,
         exact: false,
-    }
-   
+    },
+
     
     
 
 ]
 
 
-// const routeAdmin = [
-//     // {
-//     //     path: '/dashboard',
-//     //     component: DashBoard,
-//     //     exact: false,
-//     // },
-//     // {
-//     //     path: '/add-user',
-//     //     component: AddUser,
-//     //     exact: false,
-//     // },
-  
 
-// ]
 
 export {routeHome};
