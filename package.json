@@ -13,14 +13,13 @@
     "bootstrap": "^4.6.0",
     "formik": "^2.1.4",
     "jquery": "^3.6.0",
-    "node-sass": "^4.14.1",
     "popper.js": "^1.16.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-router-hash-link": "^2.4.0",
-    "react-scripts": "4.0.1",
+    "react-scripts": "^5.0.1",
     "react-slick": "^0.28.1",
     "react-spinners": "^0.10.6",
     "react-toastify": "^7.0.3",
@@ -54,5 +53,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "node-sass": "^8.0.0",
+    "sass": "^1.58.3"
   }
 }
