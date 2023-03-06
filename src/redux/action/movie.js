@@ -1,9 +1,5 @@
 import axios from "axios";
 import * as ActionType from "./../constant/constant";
-import {
-    toast
-} from 'react-toastify';
-
 
 export const actGetInfoMovieApi = (id) => {
     return (dispatch) => {
