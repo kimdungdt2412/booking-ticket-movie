@@ -68,7 +68,7 @@ export default function TheaterItem(props) {
             });
           }
           else{
-            return <p className='noti'>Không có suất chiếu</p>
+            // return <p className='noti'>Không có suất chiếu</p>
           }
          
         

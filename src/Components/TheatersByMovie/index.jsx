@@ -109,7 +109,7 @@ export default function TheatersByMovie() {
           {listCinema.map((item, index) => (
             <Tab
               className={classes.textColorInherit}
-              key={index}
+              key={item.maHeThongRap}
               value={item.maHeThongRap}
               label={item.tenHeThongRap}
               icon={<img className="logo-cinema" src={item.logo} />}
@@ -126,7 +126,7 @@ export default function TheatersByMovie() {
       return listCinema.map((item, index) => {
         return (
           <TabPanel
-            key={index}
+            key={item.maHeThongRap}
             value={value}
             index={item.maHeThongRap}
             className={classes.tabPanel}
