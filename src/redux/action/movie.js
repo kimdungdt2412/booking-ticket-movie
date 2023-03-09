@@ -1,16 +1,12 @@
 import axios from "axios";
 import * as ActionType from "./../constant/constant";
-import {
-    toast
-} from 'react-toastify';
-
 
 export const actGetInfoMovieApi = (id) => {
     return (dispatch) => {
         dispatch(actGetInfoMovieRequest());
         axios({
                 method: "GET",
-                url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`,
+                url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?maNhom=GP09&MaPhim=${id}`,
             }).then((result) => {
                
                 dispatch(actGetInfoMovieSuccess(result.data, result.data.lichChieu))
