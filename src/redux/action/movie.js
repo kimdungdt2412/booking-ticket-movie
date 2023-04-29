@@ -6,7 +6,7 @@ export const actGetInfoMovieApi = (id) => {
         dispatch(actGetInfoMovieRequest());
         axios({
                 method: "GET",
-                url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?maNhom=GP09&MaPhim=${id}`,
+                url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?maNhom=GP04&MaPhim=${id}`,
             }).then((result) => {
                
                 dispatch(actGetInfoMovieSuccess(result.data, result.data.lichChieu))

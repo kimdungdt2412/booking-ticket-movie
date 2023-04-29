@@ -60,7 +60,7 @@ export const actGetListScheduleByTheaterId = (id) => {
   return dispatch => {
     Axios({
       method: "GET",
-      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${id}&maNhom=GP09`
+      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${id}&maNhom=GP04`
     })
       .then(result => {
         dispatch({
